@@ -1,0 +1,29 @@
+package dev.profitsoft.intern.task3;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+public class Task3 {
+
+    public static void main(String[] args) {
+        List<Shape> shapes = new ArrayList<>();
+        shapes.add(new Cube(20));
+        shapes.add(new Cube(2));
+        shapes.add(new Cube(8));
+        shapes.add(new Ball(6));
+        shapes.add(new Ball(60));
+        shapes.add(new Ball(12));
+        shapes.add(new Cylinder(3, 12));
+        shapes.add(new Cylinder(8, 6));
+        shapes.add(new Cylinder(17, 4));
+
+        sortShapes(shapes);
+
+        shapes.forEach(shape -> System.out.println("Volume is " + shape.volume() + " : " + shape));
+    }
+
+    public static void sortShapes(List<Shape> shapes) {
+        shapes.sort(Comparator.comparingDouble(Shape::volume).reversed());
+    }
+}
