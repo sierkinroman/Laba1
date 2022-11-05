@@ -14,13 +14,13 @@ class Task1Test {
 
     @Test
     void getPositiveNumbers_emptyArray() {
-        int[] ar = {};
-        assertArrayEquals(new int[0], Task1.getPositiveNumbers(ar));
+        int[] arr = {};
+        assertArrayEquals(new int[0], Task1.getPositiveNumbers(arr));
     }
 
     @Test
     void getPositiveNumbers_allNegative() {
-        int[] ar = {-1, -2, -3, -4};
-        assertArrayEquals(new int[0], Task1.getPositiveNumbers(ar));
+        int[] arr = {-1, -2, -3, -4};
+        assertArrayEquals(new int[0], Task1.getPositiveNumbers(arr));
     }
 }
