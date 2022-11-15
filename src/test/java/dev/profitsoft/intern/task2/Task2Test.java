@@ -11,15 +11,15 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class Task2Test {
+public class Task2Test {
 
     private final int howMany = 5;
 
     @Test
-    void getTopHashtags() {
+    public void getTopHashtags() {
         List<String> rows = new ArrayList<>();
-        rows.add("#one#one#two this is #three");
-        rows.add("#one#three is #three for #four");
+        rows.add("#one#one#two this is #three ##one");
+        rows.add("#one#three is #three for #four ##");
         rows.add("This is #four#four#one #one #two#three");
         rows.add("For#one#two #five#two is #one #two");
         rows.add("seven six#six #one#two");
@@ -35,7 +35,12 @@ class Task2Test {
     }
 
     @Test
-    void getTopHashtags_sameHashtagsInRow() {
+    public void getTopHashtags_null() {
+        assertThrows(NullPointerException.class, () -> Task2.getTopHashtags(null, howMany));
+    }
+
+    @Test
+    public void getTopHashtags_sameHashtagsInRow() {
         List<String> rows = new ArrayList<>();
         rows.add("#one one one#one is the one #one");
 
@@ -45,7 +50,10 @@ class Task2Test {
     }
 
     @Test
-    void getTopHashtags_incorrectHowMany() {
-        assertThrows(IllegalArgumentException.class, () -> Task2.getTopHashtags(Collections.emptyList(), -1));
+    public void getTopHashtags_incorrectHowMany() {
+        IllegalArgumentException exception =
+                assertThrows(IllegalArgumentException.class, () -> Task2.getTopHashtags(Collections.emptyList(), -1));
+
+        assertEquals("howMany must be greater than 0", exception.getMessage());
     }
 }
