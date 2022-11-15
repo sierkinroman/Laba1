@@ -7,10 +7,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Task3Test {
+public class Task3Test {
 
     @Test
-    void sortShapes() {
+    public void sortShapesByVolume() {
         List<Shape> shapes = new ArrayList<>();
         Cube cube1 = new Cube(1);
         Cube cube2 = new Cube(2);
@@ -25,7 +25,7 @@ class Task3Test {
         shapes.add(cylinder1);
         shapes.add(cylinder2);
 
-        Task3.sortShapes(shapes);
+        Task3.sortShapesByVolume(shapes);
 
         List<Shape> expected = new ArrayList<>();
         expected.add(cylinder2);
@@ -39,7 +39,33 @@ class Task3Test {
     }
 
     @Test
-    void sortCubes() {
+    public void sortShapesByVolume_null() {
+        assertThrows(NullPointerException.class, () -> Task3.sortShapesByVolume(null));
+    }
+
+    @Test
+    public void sortShapesByVolume_elementsNull() {
+        List<Shape> shapes = new ArrayList<>();
+        Cube cube1 = new Cube(1);
+        Ball ball1 = new Ball(10);
+        shapes.add(null);
+        shapes.add(cube1);
+        shapes.add(ball1);
+        shapes.add(null);
+
+        Task3.sortShapesByVolume(shapes);
+
+        List<Shape> expected = new ArrayList<>();
+        expected.add(ball1);
+        expected.add(cube1);
+        expected.add(null);
+        expected.add(null);
+
+        assertIterableEquals(expected, shapes);
+    }
+
+    @Test
+    public void sortCubes() {
         List<Shape> shapes = new ArrayList<>();
         Cube cube1 = new Cube(1);
         Cube cube2 = new Cube(2);
@@ -48,7 +74,7 @@ class Task3Test {
         shapes.add(cube2);
         shapes.add(cube3);
 
-        Task3.sortShapes(shapes);
+        Task3.sortShapesByVolume(shapes);
 
         List<Shape> expected = new ArrayList<>();
         expected.add(cube3);
@@ -59,7 +85,7 @@ class Task3Test {
     }
 
     @Test
-    void sortBalls() {
+    public void sortBalls() {
         List<Shape> shapes = new ArrayList<>();
         Ball ball1 = new Ball(1);
         Ball ball2 = new Ball(2);
@@ -68,7 +94,7 @@ class Task3Test {
         shapes.add(ball2);
         shapes.add(ball3);
 
-        Task3.sortShapes(shapes);
+        Task3.sortShapesByVolume(shapes);
 
         List<Shape> expected = new ArrayList<>();
         expected.add(ball3);
@@ -79,7 +105,7 @@ class Task3Test {
     }
 
     @Test
-    void sortCylinders() {
+    public void sortCylinders() {
         List<Shape> shapes = new ArrayList<>();
         Cylinder cylinder1 = new Cylinder(1, 2);
         Cylinder cylinder2 = new Cylinder(2, 3);
@@ -88,7 +114,7 @@ class Task3Test {
         shapes.add(cylinder2);
         shapes.add(cylinder3);
 
-        Task3.sortShapes(shapes);
+        Task3.sortShapesByVolume(shapes);
 
         List<Shape> expected = new ArrayList<>();
         expected.add(cylinder3);

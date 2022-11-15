@@ -10,19 +10,37 @@ public class Cylinder extends Shape {
     private double height;
 
     public Cylinder(double radius, double height) {
-        if (radius <= 0) {
-            throw new IllegalArgumentException("radius must be greater than 0");
-        }
-        if (height <= 0) {
-            throw new IllegalArgumentException("height must be greater than 0");
-        }
+        checkRadius(radius);
+        checkHeight(height);
 
         this.radius = radius;
         this.height = height;
     }
 
+    private void checkRadius(double radius) {
+        if (radius <= 0) {
+            throw new IllegalArgumentException("radius must be greater than 0");
+        }
+    }
+
+    private void checkHeight(double height) {
+        if (height <= 0) {
+            throw new IllegalArgumentException("height must be greater than 0");
+        }
+    }
+
+    public void setRadius(double radius) {
+        checkRadius(radius);
+        this.radius = radius;
+    }
+
+    public void setHeight(double height) {
+        checkHeight(height);
+        this.height = height;
+    }
+
     @Override
-    public double volume() {
+    public double getVolume() {
         return Math.PI * radius * radius * height;
     }
 }
