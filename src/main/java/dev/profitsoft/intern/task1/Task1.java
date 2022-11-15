@@ -1,7 +1,7 @@
 package dev.profitsoft.intern.task1;
 
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Comparator;
 
 public class Task1 {
 
@@ -10,11 +10,11 @@ public class Task1 {
         System.out.println(Arrays.toString(Task1.getPositiveNumbers(arr)));
     }
 
-    public static int[] getPositiveNumbers(int[] array) {
-        return Arrays.stream(array)
+    public static int[] getPositiveNumbers(int[] numbers) {
+        return Arrays.stream(numbers)
                 .boxed()
                 .filter(e -> e >= 0)
-                .sorted(Collections.reverseOrder())
+                .sorted(Comparator.comparingInt(Integer::intValue).reversed())
                 .mapToInt(Integer::intValue)
                 .toArray();
     }
