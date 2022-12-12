@@ -7,10 +7,10 @@ public class Task1 {
 
     public static void main(String[] args) {
         int[] arr = {1, 2, -8, 0, 23, 8, 12, -7, 23, 0, 1, 1, -2};
-        System.out.println(Arrays.toString(Task1.getPositiveNumbers(arr)));
+        System.out.println(Arrays.toString(Task1.getSortedPositiveNumbers(arr)));
     }
 
-    public static int[] getPositiveNumbers(int[] numbers) {
+    public static int[] getSortedPositiveNumbers(int[] numbers) {
         return Arrays.stream(numbers)
                 .boxed()
                 .filter(e -> e >= 0)

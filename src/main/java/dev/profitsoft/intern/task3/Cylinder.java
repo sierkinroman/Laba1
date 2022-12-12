@@ -41,6 +41,6 @@ public class Cylinder extends Shape {
 
     @Override
     public double getVolume() {
-        return Math.PI * radius * radius * height;
+        return Math.PI * Math.pow(radius, 2) * height;
     }
 }
